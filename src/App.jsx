@@ -6,6 +6,9 @@ import Main from '../components/Main/Main';
 
 function App() {
 
+  const [page, setPage] = useState('home');
+  const [user, setUser] = useState(false);
+
   /* ---PULL FROM GAMES DATA API--- */
   const [gamesData, setGamesData] = useState({results:[]}); // Pull of all data in the Games API array
   
@@ -21,13 +24,17 @@ function App() {
 
   return (
     <>
-    <Header />
-    <Main />
-    {/* Code showing the Games API first set of 20 results*/}
-    <h1>RAWG Games API</h1>
+    <Header setPage={setPage} user={user}/>
+    <Main page={page} setUser={setUser}/>
+    {console.log(page)}
+    {console.log(user)}
+    
+    {user === true ? <> <h1>RAWG Games API</h1>
     {gamesData.results.map((game) => (
       <h2 key={game.id}>{game.name}</h2>
-    ))}
+    ))} </>: <></>}
+    {/* Code showing the Games API first set of 20 results */}
+   
     </>
   )
 }

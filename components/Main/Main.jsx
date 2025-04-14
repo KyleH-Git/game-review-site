@@ -1,9 +1,19 @@
+import Reviews from "../Reviews/Reviews";
+import LoginForm from "../LoginForm/LoginForm";
+import SignupForm from "../SignupForm/SignupForm";
+import ReviewForm from "../ReviewForm/ReviewForm";
 
-const Main = () => {
+const Main = (props) => {
     return (
+     
         <main>
-            content here
+        {props.page === 'home' ? <Reviews /> : <></>}
+        {props.page === 'login' ? <LoginForm setUser={props.setUser}/> : <></>}
+        {props.page === 'signup' ? <SignupForm setUser={props.setUser}/> : <></>}
+        {props.page === 'reviewform' ? <ReviewForm /> : <></>}
+
         </main>
+  
     );
 };
 
