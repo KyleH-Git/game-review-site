@@ -55,4 +55,4 @@ const ReviewForm = (props) => {
         );
 };
 
-export default ReviewForm;
+export default SignupForm;
