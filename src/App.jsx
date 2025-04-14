@@ -8,7 +8,7 @@ function App() {
   
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch(`http://localhost:3060/api/games`) // Update to AWS Server link after initialization
+      const response = await fetch(`http://34.228.71.240:3060/api/games`) // Update to AWS Server link after initialization
       const JSONdata = await response.json()
       setGamesData(JSONdata || [])
       console.log(JSONdata.results) // Shows Games Data fields in array to pull from 
@@ -21,7 +21,7 @@ function App() {
     {/* Code showing the Games API first set of 20 results*/}
     <h1>RAWG Games API</h1>
     {gamesData.results.map((game) => (
-      <h1 key={game.id}>{game.name}</h1>
+      <h2 key={game.id}>{game.name}</h2>
     ))}
     </>
   )
