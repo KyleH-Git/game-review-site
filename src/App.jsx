@@ -3,6 +3,7 @@ import './App.css'
 
 import Header from '../components/Header/Header';
 import Main from '../components/Main/Main';
+import ReviewForm from '../components/ReviewForm/ReviewForm'
 
 function App() {
 
@@ -52,7 +53,7 @@ function App() {
     {console.log(page)}
     {console.log(user)}
     
-    {user === true ? <> <h1>RAWG Games API</h1>
+    {user === true ? <> <h1>RAWG Games API</h1> {/* Create games view component and review form creation */}
     {gamesData.results.map((game) => (
       <div className='game-container' key={game.id}> 
       <img src={game.background_image} style={{ width: 100, height: 200}}/>
