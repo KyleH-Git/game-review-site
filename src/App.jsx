@@ -17,6 +17,7 @@ function App() {
     gameReleased: '',
     gameGenre: [],
   })
+  const [userGameReview, setUserGameReview] = useState([]) // for testing purposes
 
   /* ---PULL FROM GAMES DATA API--- */
   const [gamesData, setGamesData] = useState({results:[]}); // Pull of all data in the Games API array
@@ -32,7 +33,7 @@ function App() {
   }, [])
 
 
-  const handleClick = (gameName, gameRating, gameId, gameImg, gameReleased, gameGenre) => {
+  const handleClick = (gameName, gameRating, gameId, gameImg, gameReleased, gameGenre) =>  {
     setGameData({
       gameName: gameName,
       gameRating: gameRating,
@@ -40,7 +41,6 @@ function App() {
       gameImg: gameImg,
       gameReleased: gameReleased,
       gameGenre: gameGenre,
-
     })
     setPage('reviewform');
     console.log(gameData)
@@ -49,16 +49,16 @@ function App() {
   return (
     <>
     <Header setPage={setPage} user={user}/>
-    <Main page={page} setUser={setUser} gameData={gameData}/>
+    <Main page={page} setPage={setPage} setUser={setUser} gameData={gameData} userGameReview={userGameReview} setUserGameReview={setUserGameReview}/>
     {console.log(page)}
     {console.log(user)}
     
     {user === true ? <> <h1>RAWG Games API</h1> {/* Create games view component and review form creation */}
     {gamesData.results.map((game) => (
       <div className='game-container' key={game.id}> 
-      <img src={game.background_image} style={{ width: 100, height: 200}}/>
+      <img src={game.background_image} style={{ maxWidth: 500}}/>
       <h2> Name: {game.name} Rating: {game.rating} Metacritic: {game.metacritic}</h2>
-      <button onClick={() => handleClick(game.name, game.rating, game.id, game.background_image, game.released, game.genre)}>Create Review</button>
+      <button onClick={() => handleClick(game.name, game.rating, game.id, game.background_image, game.released, game.genres)}>Create Review</button>
       </div>
     ))} </>: <></>}
     {/* Code showing the Games API first set of 20 results */}

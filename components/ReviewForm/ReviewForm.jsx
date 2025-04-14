@@ -1,27 +1,51 @@
 import { useState } from 'react'
 
-const ReviewForm = (props) => {
+const ReviewForm = ({gameData, setPage, userGameReview, setUserGameReview}) => {
 
-    const [newReview, setReviewForm] = useState({title: '', body: '', stars: null})
+    const [newReview, setReviewForm] = useState({ // new review form state variable
+        gameId: '',
+        title: '', 
+        body: '', 
+        stars: null})
 
-    const handleChange = (evt) => {
+    const handleChange = (evt) => { // handles the form submission values that the user is inputting
         evt.preventDefault()
         setReviewForm({ ...newReview, [evt.target.name]: evt.target.value})
         console.log(newReview)
     }
 
-    const handleSubmit = (evt) => {
+    const handleSubmit = (evt) => { // New Review submission logic
         evt.preventDefault();
-
+        
+        const newReviewSubmission = { // handles the addition of the gameId into the new review submission 
+            ...newReview,
+            gameId: gameData.gameId
+        }
+        
+        setUserGameReview(prev => [...prev, newReviewSubmission]) // Logic to set the game review into the state variable 
         // Set logic to app.post new review submissions into Reviews Database
-        setReviewForm({title: '', body: '', stars: null}) // reset submission
-        props.showRequestForm(false)
+        setReviewForm({gameId: '', title: '', body: '', stars: null}) // resets submission form
+        setPage('home') // Navigates back to main page
+        console.log('Check Game Id: ', newReviewSubmission)
     }
 
     return (
         <div>
+            <button onClick={() => console.log(userGameReview)}>Check Game Reviews</button> {/* Logic to test checking game review */}
+            <div className='game-container' key={gameData.gameId}>
+                <img src={gameData.gameImg} style={{ maxWidth: 500}}/>
+                <h2>{gameData.gameName}</h2>
+                <p>Overall Rating: {gameData.gameRating}</p>
+                <p>Date Released: {gameData.gameReleased}</p>
+                <div id='genreBox'> 
+                    <p>Genre: {gameData.gameGenre.map((genre) => (
+                        genre.name + ' '
+                    ))}
+                    </p>
+            </div>
+        </div>
             <form>
-                <label name="title"> Review Title:   
+                <label name="title">Review Title: 
                     <input
                     type="text"
                     name='title'
@@ -51,8 +75,20 @@ const ReviewForm = (props) => {
                 <br/><br/>
                 <button onClick={handleSubmit}>Submit New Review</button>
             </form>
+            <div>
+            <h3>Submitted Reviews</h3> {/* Testing purposes only: views all game reviews created */}
+            {userGameReview.map((review, index) => (
+                <div key={index} style={{border: '1px solid gray', padding: '1rem', margin: '0.5rem 0'}}>
+                <h4>{review.title}</h4>
+                <p>{review.body}</p>
+                <p>Stars: {review.stars}</p>
+                <p>Game ID: {review.gameId}</p>
+                </div>
+            ))}
+            </div>
         </div>
+        
         );
 };
 
-export default SignupForm;
+export default ReviewForm;
