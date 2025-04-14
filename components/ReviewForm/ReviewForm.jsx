@@ -1,9 +1,9 @@
-const ReviewForm = (props) => {
+const SignupForm = (props) => {
     return (
         <form>
-            <p>review form</p>
+            <p>signup form</p>
         </form>
     );
 };
 
-export default ReviewForm;
+export default SignupForm;
