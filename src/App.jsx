@@ -3,11 +3,14 @@ import './App.css'
 
 import Header from '../components/Header/Header';
 import Main from '../components/Main/Main';
+import ReviewForm from '../components/ReviewForm/ReviewForm'
 
 function App() {
 
   const [page, setPage] = useState('home');
   const [user, setUser] = useState(false);
+  const [userReviews, addUserReview] = useState([])
+  const [isReviewForm, showRequestForm] = useState(false)
 
   /* ---PULL FROM GAMES DATA API--- */
   const [gamesData, setGamesData] = useState({results:[]}); // Pull of all data in the Games API array
@@ -22,14 +25,21 @@ function App() {
     getData()
   }, [])
 
+  const handleViewForm = () => {
+    showRequestForm(true)
+  }
+
   return (
     <>
     <Header setPage={setPage} user={user}/>
+    {isReviewForm ? null : <button onClick={handleViewForm}>Create New Review</button>}
     <Main page={page} setUser={setUser}/>
+
+    {isReviewForm ? <ReviewForm reviews={userReviews} addUserReview={addUserReview} showRequestForm={showRequestForm}/>: null}
     {console.log(page)}
     {console.log(user)}
     
-    {user === true ? <> <h1>RAWG Games API</h1>
+    {user === true ? <> <h1>RAWG Games API</h1> {/* Create games view component and review form creation */}
     {gamesData.results.map((game) => (
       <h2 key={game.id}>{game.name}</h2>
     ))} </>: <></>}
