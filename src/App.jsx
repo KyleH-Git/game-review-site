@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
+import Header from '../components/Header/Header';
+import Main from '../components/Main/Main';
+
 function App() {
 
   /* ---PULL FROM GAMES DATA API--- */
@@ -18,6 +21,8 @@ function App() {
 
   return (
     <>
+    <Header />
+    <Main />
     {/* Code showing the Games API first set of 20 results*/}
     <h1>RAWG Games API</h1>
     {gamesData.results.map((game) => (
