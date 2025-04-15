@@ -76,7 +76,7 @@ const ReviewForm = ({gameData, setPage, userGameReview, setUserGameReview}) => {
                 <button onClick={handleSubmit}>Submit New Review</button>
             </form>
             <div>
-            <h3>Submitted Reviews</h3> {/* Testing purposes only: views all game reviews created */}
+            <h3>{`USERNAME'S`} Submitted Reviews</h3> {/* Testing purposes only: views all game reviews created */}
             {userGameReview.map((review, index) => (
                 <div key={index} style={{border: '1px solid gray', padding: '1rem', margin: '0.5rem 0'}}>
                 <h4>{review.title}</h4>
