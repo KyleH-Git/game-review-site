@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const ReviewForm = ({gameData, setPage, userGameReview, setUserGameReview, user}) => {
+const ReviewForm = ({setGameData, gameData, setPage, userGameReview, setUserGameReview, user}) => {
 
     const [newReview, setReviewForm] = useState({ // new review form state variable
         gameId: '',
@@ -11,7 +11,7 @@ const ReviewForm = ({gameData, setPage, userGameReview, setUserGameReview, user}
     const handleChange = (evt) => { // handles the form submission values that the user is inputting
         evt.preventDefault()
         setReviewForm({ ...newReview, [evt.target.name]: evt.target.value})
-        console.log(newReview)
+        // console.log(newReview)
     }
 
     const handleSubmit = async (evt) => { // New Review submission logic
@@ -48,16 +48,15 @@ const ReviewForm = ({gameData, setPage, userGameReview, setUserGameReview, user}
             if (Response) {
 
                 setReviewForm({gameId: '', title: '', body: '', stars: null}) // resets submission form
+                setGameData({results:[]})
                 setPage('home') // Navigates back to main page
-                console.log('Check Game Id: ', newReviewSubmission)
+                // console.log('Check Game Id: ', newReviewSubmission)
             }
 
         } catch (err) {
 
             console.log(err);
-
-        } 
-            
+        }
     }
 
     return (
@@ -106,8 +105,9 @@ const ReviewForm = ({gameData, setPage, userGameReview, setUserGameReview, user}
                 <br/><br/>
                 <button onClick={handleSubmit}>Submit New Review</button>
             </form>
-            <div>
-            <h3>{`USERNAME'S`} Submitted Reviews</h3> {/* Testing purposes only: views all game reviews created */}
+            {/* Testing purposes only: views all game reviews created */}
+            {/* <div>
+            <h3>{`USERNAME'S`} Submitted Reviews</h3> 
             {userGameReview.map((review, index) => (
                 <div key={index} style={{border: '1px solid gray', padding: '1rem', margin: '0.5rem 0'}}>
                 <h4>{review.title}</h4>
@@ -116,7 +116,7 @@ const ReviewForm = ({gameData, setPage, userGameReview, setUserGameReview, user}
                 <p>Game ID: {review.gameId}</p>
                 </div>
             ))}
-            </div>
+            </div> */}
         </div>
         
         );
