@@ -15,7 +15,6 @@ const LoginForm = (props) => {
                 },
                 body: JSON.stringify({
                     accountName: event.target.elements.accountName.value,
-                    userName: event.target.elements.userName.value,
                     password: event.target.elements.password.value
                 })
               })
@@ -25,7 +24,6 @@ const LoginForm = (props) => {
 
                 // Initiate form fields 
                 event.target.elements.accountName.value = '';
-                event.target.elements.userName.value = '';
                 event.target.elements.password.value = '';
                 
                 // Gather user to set (STILL NEEDS TO BE TESTED)
@@ -50,9 +48,6 @@ const LoginForm = (props) => {
 
             <label htmlFor="accountName">Account Name:</label>
             <input type="text" name="accountName" id="accountName" required />
-
-            <label htmlFor="userName">User Name:</label>
-            <input type="text" name="userName" id="userName" required />
 
             <label htmlFor="password">Password:</label>
 
