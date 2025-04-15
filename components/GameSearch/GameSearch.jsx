@@ -34,20 +34,21 @@ const GameSearch = ({setPage, gameData, setGameData}, props) => {
 
   return (
     <div>
-    <form onSubmit={handleSearchSubmit}> {/* Search bar to submit new game */}
-        <input type='text' onChange={handleChange}/>
-        <button type='submit'>Search Games</button>
-    </form>
+        <form onSubmit={handleSearchSubmit}> {/* Search bar to submit new game */}
+            <input type='text' onChange={handleChange}/>
+            <button type='submit'>Search Games</button>
+        </form>
     {!gameData 
     ? <></>
     : gameData.results.map((game) => (
         <div className='game-container' key={game.id}> 
           <img src={game.background_image} style={{ maxWidth: 500}}/>
           <h2> Name: {game.name} Rating: {game.rating} Metacritic: {game.metacritic}</h2>
-          <button onClick={() => handleClick(game.name, game.rating, game.id, game.background_image, game.released, game.genres)}>Create Review</button>
+          <button onClick={() => handleClick(game.name, game.rating, game.id, game.background_image, game.released, game.genres)}>Write Review</button>
         </div>
       ))
     }
+        <a href="https://rawg.io/" target="_blank"> Powered by RAWG.io</a>
     </div>
   )   
 }

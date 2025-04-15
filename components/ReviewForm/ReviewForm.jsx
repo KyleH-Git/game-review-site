@@ -117,6 +117,7 @@ const ReviewForm = ({setGameData, gameData, setPage, userGameReview, setUserGame
                 </div>
             ))}
             </div> */}
+            <div><a href="https://rawg.io/" target="_blank"> Powered by RAWG.io</a></div>
         </div>
         
         );
