@@ -11,6 +11,11 @@ const Header = (props) => {
         props.setPage('home')
     }
 
+    const handleGameSearch = () => {
+        props.setGameData({results:[]})
+        props.setPage('gamesearch')
+    }
+
     return (
         <header>
             <h1>HEader</h1>
@@ -23,6 +28,7 @@ const Header = (props) => {
             : 
             <>
             <button name="profile" onClick={handleClick}>Profile</button>
+            <button onClick={handleGameSearch}>Game Search</button>
             <button name="signout" onClick={handleLogout}>Log-Out</button>
             </>
             }
