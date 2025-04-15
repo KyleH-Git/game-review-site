@@ -27,18 +27,18 @@ function App() {
 
   return (
     <>
-    <Header setPage={setPage} user={user} setUser={setUser} setGameData={setGameData}/>
-    <Main 
-    page={page} // Page States
-    setPage={setPage} // Change Page states in child components
-    setUser={setUser} // Update User for Sign-Up & Sign-In
-    // gamesData={gamesData} // Reference to complete data set, currently unnecessary
-    gameData={gameData} // Specific data of a single view
-    setGameData={setGameData} // Function to set state variable
-    user={user} // User data to refer in states
-    userGameReview={userGameReview}
-    setUserGameReview={setUserGameReview} 
-    />
+      <Header setPage={setPage} user={user} setUser={setUser} setGameData={setGameData}/>
+      <Main 
+      page={page} // Page States
+      setPage={setPage} // Change Page states in child components
+      setUser={setUser} // Update User for Sign-Up & Sign-In
+      user={user} // User data to refer in states
+      gameData={gameData} // Specific data of a single view
+      setGameData={setGameData} // Function to set state variable
+      userGameReview={userGameReview}
+      setUserGameReview={setUserGameReview}
+          // gamesData={gamesData} // Reference to complete data set, currently unnecessary
+      />
     </>
   )
 }
