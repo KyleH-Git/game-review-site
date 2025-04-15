@@ -8,7 +8,7 @@ import ReviewForm from '../components/ReviewForm/ReviewForm'
 function App() {
 
   const [page, setPage] = useState('home');
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState({accountName: ''});
   const [gameData, setGameData] = useState({
     gameName: '',
     gameRating: '',
@@ -48,12 +48,12 @@ function App() {
 
   return (
     <>
-    <Header setPage={setPage} user={user}/>
+    <Header setPage={setPage} user={user} setUser={setUser}/>
     <Main page={page} setPage={setPage} setUser={setUser} gameData={gameData} userGameReview={userGameReview} setUserGameReview={setUserGameReview}/>
     {console.log(page)}
     {console.log(user)}
     
-    {user === true ? <> <h1>RAWG Games API</h1> {/* Create games view component and review form creation */}
+    {user.accountName !== '' ? <> <h1>RAWG Games API</h1> {/* Create games view component and review form creation */}
     {gamesData.results.map((game) => (
       <div className='game-container' key={game.id}> 
       <img src={game.background_image} style={{ maxWidth: 500}}/>
