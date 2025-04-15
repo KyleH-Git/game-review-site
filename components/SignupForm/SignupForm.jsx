@@ -40,16 +40,16 @@ const SignupForm = (props) => {
         <form action="http://3.80.194.147:3000/auth/sign-up" method="POST" onSubmit={handleSubmit}>
 
             <p>Signup form</p>
-            <label for="accountName">Account Name:</label>
+            <label htmlFor="accountName">Account Name:</label>
             <input type="text" name="accountName" id="accountName" required/>
 
-            <label for="userName">User Name:</label>
+            <label htmlFor="userName">User Name:</label>
             <input type="text" name="userName" id="userName" required />
 
-            <label for="password">Password:</label>
+            <label htmlFor="password">Password:</label>
             <input type="password" name="password" id="password" required />
 
-            <label for="confirmPassword">Confirm Password:</label>
+            <label htmlFor="confirmPassword">Confirm Password:</label>
             <input type="password" name="confirmPassword" id="confirmPassword" required />
             <button type="submit" id="signUpButton">Sign up</button>
         </form>

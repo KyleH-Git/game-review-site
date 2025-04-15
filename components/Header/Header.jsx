@@ -22,7 +22,7 @@ const Header = (props) => {
             </>
             : 
             <>
-            <button>Profile</button>
+            <button name="profile" onClick={handleClick}>Profile</button>
             <button name="signout" onClick={handleLogout}>Log-Out</button>
             </>
             }

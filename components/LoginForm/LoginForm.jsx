@@ -47,13 +47,15 @@ const LoginForm = (props) => {
         <form action="http://3.80.194.147:3000/auth/sign-in" method="POST" onSubmit={handleSubmit}>
 
             <p>login form</p>
-            <label>Account Name:</label>
+
+            <label htmlFor="accountName">Account Name:</label>
             <input type="text" name="accountName" id="accountName" required />
 
-            <label>User Name:</label>
+            <label htmlFor="userName">User Name:</label>
             <input type="text" name="userName" id="userName" required />
 
-            <label>Password:</label>
+            <label htmlFor="password">Password:</label>
+
             <input type="password" name="password" id="password" required />
 
             <button type="submit" id="signUpButton">Submit! </button>
