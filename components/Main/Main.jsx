@@ -13,6 +13,7 @@ const Main = (props) => {
         {props.page === 'signup' ? <SignupForm setUser={props.setUser} setPage={props.setPage}/> : <></>}
         {props.page === 'reviewform' ? <ReviewForm setPage={props.setPage} gameData={props.gameData} userGameReview={props.userGameReview} setUserGameReview={props.setUserGameReview}/> : <></>}
         {props.page === 'profile' ? <Profile user={props.user}/> : <></>}
+
         </main>
   
     );

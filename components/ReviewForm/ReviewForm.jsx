@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const ReviewForm = ({gameData, setPage, userGameReview, setUserGameReview}) => {
+const ReviewForm = ({gameData, setPage, userGameReview, setUserGameReview, user}) => {
 
     const [newReview, setReviewForm] = useState({ // new review form state variable
         gameId: '',
@@ -14,7 +14,7 @@ const ReviewForm = ({gameData, setPage, userGameReview, setUserGameReview}) => {
         console.log(newReview)
     }
 
-    const handleSubmit = (evt) => { // New Review submission logic
+    const handleSubmit = async (evt) => { // New Review submission logic
         evt.preventDefault();
         
         const newReviewSubmission = { // handles the addition of the gameId into the new review submission 
@@ -23,10 +23,41 @@ const ReviewForm = ({gameData, setPage, userGameReview, setUserGameReview}) => {
         }
         
         setUserGameReview(prev => [...prev, newReviewSubmission]) // Logic to set the game review into the state variable 
+        
         // Set logic to app.post new review submissions into Reviews Database
-        setReviewForm({gameId: '', title: '', body: '', stars: null}) // resets submission form
-        setPage('home') // Navigates back to main page
-        console.log('Check Game Id: ', newReviewSubmission)
+        try {
+            
+            // Send create new review req to db, and catpure response. 
+            const Response = await fetch("http://3.80.194.147:3000/reviews/new", {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user: user.accountName, 
+                    gameAPIId: newReviewSubmission.gameId,
+                    stars: newReviewSubmission.stars,
+                    title: newReviewSubmission.title,
+                    body: newReviewSubmission.body,
+                    likes: 0,
+                    dislikes: 0
+                })
+              })
+              
+            // If login was successful...
+            if (Response) {
+
+                setReviewForm({gameId: '', title: '', body: '', stars: null}) // resets submission form
+                setPage('home') // Navigates back to main page
+                console.log('Check Game Id: ', newReviewSubmission)
+            }
+
+        } catch (err) {
+
+            console.log(err);
+
+        } 
+            
     }
 
     return (
