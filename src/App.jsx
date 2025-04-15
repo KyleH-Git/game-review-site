@@ -49,7 +49,7 @@ function App() {
   return (
     <>
     <Header setPage={setPage} user={user} setUser={setUser}/>
-    <Main page={page} setPage={setPage} setUser={setUser} gameData={gameData} userGameReview={userGameReview} setUserGameReview={setUserGameReview}/>
+    <Main page={page} setPage={setPage} setUser={setUser} user={user} gameData={gameData} userGameReview={userGameReview} setUserGameReview={setUserGameReview}/>
     {console.log(page)}
     {console.log(user)}
     

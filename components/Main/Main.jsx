@@ -2,6 +2,7 @@ import Reviews from "../Reviews/Reviews";
 import LoginForm from "../LoginForm/LoginForm";
 import SignupForm from "../SignupForm/SignupForm";
 import ReviewForm from "../ReviewForm/ReviewForm";
+import Profile from "../Profile/Profile.jsx"
 
 const Main = (props) => {
     return (
@@ -11,7 +12,7 @@ const Main = (props) => {
         {props.page === 'login' ? <LoginForm setUser={props.setUser} setPage={props.setPage}/> : <></>}
         {props.page === 'signup' ? <SignupForm setUser={props.setUser} setPage={props.setPage}/> : <></>}
         {props.page === 'reviewform' ? <ReviewForm setPage={props.setPage} gameData={props.gameData} userGameReview={props.userGameReview} setUserGameReview={props.setUserGameReview}/> : <></>}
-
+        {props.page === 'profile' ? <Profile user={props.user}/> : <></>}
         </main>
   
     );
