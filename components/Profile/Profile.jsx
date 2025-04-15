@@ -6,7 +6,7 @@ const GameView = (props) => {
 
     useEffect(() => {
         const getUserReviews = async () => {
-            const response = await fetch(`http://34.228.71.240:3000/reviews/${props.user.accountName}`, {
+            const response = await fetch(`http://3.80.194.147:3000/reviews/${props.user.accountName}`, {
                 method: 'GET',
                 headers: {
                   'Content-Type': 'application/json'
@@ -14,7 +14,6 @@ const GameView = (props) => {
             }) // Update to AWS Server link after initialization
             const JSONdata = await response.json()
             setUserReviews(JSONdata || [])
-            console.log(JSONdata.results) // Shows Games Data fields in array to pull from 
           }
           getUserReviews();
     }, [])
@@ -22,11 +21,16 @@ const GameView = (props) => {
     return (
         <>
         <p>Profile</p>
+        {console.log(userReviews)}
         {userReviews.map((review) => {
+            return(
             <>
                 <p>reviews stuff</p>
                 <p>{review.title}</p>
+                <button>Edit</button>
+                <button>Delete</button>
             </>
+            )
         })}
         </>
 
