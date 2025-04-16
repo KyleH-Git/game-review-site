@@ -4,7 +4,6 @@ const SignupForm = (props) => {
         try {
 
             event.preventDefault();
-
             
             const Response = await fetch("http://3.80.194.147:3000/auth/sign-up", {
                 method: 'POST',

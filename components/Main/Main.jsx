@@ -16,8 +16,7 @@ const Main = (props) => {
         {props.page === 'reviewform' ? <ReviewForm setPage={props.setPage} setGameData={props.setGameData} gameData={props.gameData} userGameReview={props.userGameReview} setUserGameReview={props.setUserGameReview} user={props.user}/> : <></>}
         {props.page === 'gamesearch' ? <GameSearch setPage={props.setPage} setGameData={props.setGameData} gameData={props.gameData} /> : <></>}
 
-        {props.page === 'reviewform' ? <ReviewForm setPage={props.setPage} gameData={props.gameData} userGameReview={props.userGameReview} setUserGameReview={props.setUserGameReview} user={props.user}/> : <></>}
-        {props.page === 'profile' ? <Profile user={props.user}/> : <></>}
+        {props.page === 'profile' ? <Profile user={props.user} setUser={props.setUser}/> : <></>}
 
         </main>
      </>
