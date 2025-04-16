@@ -1,3 +1,5 @@
+import './EditReview.css'
+
 const EditReview = (props) => {
 
     const handleChange = (evt) => { // handles the form submission values that the user is inputting
@@ -38,26 +40,30 @@ const EditReview = (props) => {
     return (
         <>
         <p>Edit Review</p>
-        <form>
-                <label name="title">Review Title: 
-                    <input
+        <form className="reviewForm">
+                <label name="title" style={{fontSize: '2em'}}>Review Title: 
+                    
+                </label><br/><br/>
+                <input
                     type="text"
                     name='title'
                     value={props.reviewForm.title}
                     onChange={handleChange}
                     />
-                </label><br/><br/>
-                <label name="body">Review:<br/>
+                    <br/><br/>
+                <label name="body" style={{fontSize: '2em'}}>Review:<br/>
                     <textarea 
-                    rows="6"
-                    cols="50"
+                    rows="10"
+                    cols="70"
                     type="text"
                     name='body'
                     value={props.reviewForm.body}
+                    placeholder="Type Review Here"
+                    style={{padding: '10px', fontSize: '14px'}}
                     onChange={handleChange}>
                     </textarea>
                 </label><br/><br/>
-                <label name="stars">
+                <label id="starsBtn"name="stars">
                     <button name='stars' value={1} onClick={handleChange}>1 Star</button>
                     <button name='stars' value={2} onClick={handleChange}>2 Stars</button>
                     <button name='stars' value={3} onClick={handleChange}>3 Stars</button>

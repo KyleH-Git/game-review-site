@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import './GameReviews.css'
 
 const GameReviews = (props) => {
 
@@ -33,18 +34,22 @@ const GameReviews = (props) => {
             </h3>
 
         </div>
-        {gameReviews.filter(game => game.gameAPIId === props.gameData.gameId).length > 0 ? (
-            gameReviews.filter(game => game.gameAPIId === props.gameData.gameId).map((review, index) => (
-                <div key={index}>
-                    <h2>Review Title: {review.title}</h2>
-                    <h3>User Reviewer: {review.user}</h3>
-                    <p>Review Body: {review.body}</p>
-                    <p>Review Stars: {review.stars}</p>
-                </div>
-                ))
-            )
-            : (<h1>No Reviews Written</h1>)
-        }
+
+        <div className="game-review-container">
+            {gameReviews.filter(game => game.gameAPIId === props.gameData.gameId).length > 0 ? (
+                gameReviews.filter(game => game.gameAPIId === props.gameData.gameId).map((review, index) => (
+                    <div className="game-review-card" key={index}>
+                        <h2>Review Title: {review.title}</h2>
+                        <h3>User Reviewer: {review.user}</h3>
+                        <p>Review Body: {review.body}</p>
+                        <p>Review Stars: {review.stars}</p>
+                    </div>
+                    ))
+                )
+                
+                : (<h1>No Reviews Written</h1>)
+            }
+        </div>
         <div><a href="https://rawg.io/" target="_blank"> Powered by RAWG.io</a></div>
         </>
     )

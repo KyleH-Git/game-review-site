@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import EditReview from '../EditReview/EditReview';
 import EditUsername from '../EditUsername/EditUsername';
+import './Profile.css'
 
 const GameView = (props) => {
 
@@ -58,25 +59,25 @@ const GameView = (props) => {
 
     return (
         <>
-        <p> {props.user.userName} Profile</p>
-        <p> Account: {props.user.accountName}</p>
+        <h2> Account: {props.user.accountName}</h2>
+        <p> {props.user.userName}'s Profile</p>
         {props.profilePage === '' ? 
         <>
-        <button name="edit-username" onClick={handleClick}>Change Username</button>
-        {console.log(userReviews)}
+        <button className="edituser-btn" name="edit-username" onClick={handleClick}>Change Username</button>
+        <div className="game-review-container">
         {userReviews.map((review) => {
             return(
                 
-            <div name={review._id} value={review.gameAPIId} key={review._id}>
+            <div className="game-review-card"name={review._id} value={review.gameAPIId} key={review._id}>
                 {console.log(review._id)}
                 <p>{review.title}</p>
                 <p>{review.body}</p>
                 <p>{review.stars}</p>
-                <button name="review-edit"onClick={handleClick} value={review._id}>Edit</button>
-                <button name="review-delete"onClick={handleClick} value={review._id}>Delete</button>
+                <button className="edit-btn"name="review-edit"onClick={handleClick} value={review._id}>Edit</button>
+                <button className="delete-btn" name="review-delete"onClick={handleClick} value={review._id}>Delete</button>
             </div>
             )
-        })} </> : 
+        })}</div> </> : 
         <>
             {props.profilePage === 'edit-username' ? <EditUsername setProfileForm={props.setProfilePage} user={props.user} setUser={props.setUser}/> 
             : <EditReview 
