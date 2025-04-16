@@ -1,7 +1,7 @@
-
 const Header = (props) => {
 
     const handleClick = (event) =>{
+        props.setProfilePage('')
         props.setPage(event.target.name);
     }
 
@@ -18,7 +18,7 @@ const Header = (props) => {
 
     return (
         <header>
-            <h1>HEader</h1>
+            <h1>Video Game Review Site</h1>
             {props.user.accountName === ''
             ? 
             <>
@@ -27,6 +27,7 @@ const Header = (props) => {
             </>
             : 
             <>
+            <button name="home" onClick={handleClick}>Home</button>
             <button name="profile" onClick={handleClick}>Profile</button>
             <button onClick={handleGameSearch}>Game Search</button>
             <button name="signout" onClick={handleLogout}>Log-Out</button>

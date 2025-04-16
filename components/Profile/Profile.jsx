@@ -5,7 +5,7 @@ import EditUsername from '../EditUsername/EditUsername';
 const GameView = (props) => {
 
     const [userReviews, setUserReviews] = useState([]);
-    const [profileForm, setProfileForm] = useState('');
+    // const [profileForm, setProfileForm] = useState('');
     const [reviewForm, setReviewForm] = useState({ // new review form state variable
         reviewId: '',
         gameId: '',
@@ -32,9 +32,9 @@ const GameView = (props) => {
     const handleClick = async (event) => {
         console.log(event.target)
         if(event.target.name === 'edit-username'){
-            setProfileForm('edit-username');
+            props.setProfilePage('edit-username');
         } else if(event.target.name === 'review-edit'){
-            setProfileForm('review-edit');
+            props.setProfilePage('review-edit');
             setReviewForm({
                 gameId: event.target.parentElement.value,
                 reviewId: event.target.value,
@@ -60,7 +60,7 @@ const GameView = (props) => {
         <>
         <p> {props.user.userName} Profile</p>
         <p> Account: {props.user.accountName}</p>
-        {profileForm === '' ? 
+        {props.profilePage === '' ? 
         <>
         <button name="edit-username" onClick={handleClick}>Change Username</button>
         {console.log(userReviews)}
@@ -78,9 +78,9 @@ const GameView = (props) => {
             )
         })} </> : 
         <>
-            {profileForm === 'edit-username' ? <EditUsername setProfileForm={setProfileForm} user={props.user} setUser={props.setUser}/> 
+            {props.profilePage === 'edit-username' ? <EditUsername setProfileForm={props.setProfilePage} user={props.user} setUser={props.setUser}/> 
             : <EditReview 
-            setProfileForm={setProfileForm} 
+            setProfileForm={props.setProfilePage} 
             setReviewForm={setReviewForm}
             setClicked={setClicked}
             reviewForm={reviewForm}

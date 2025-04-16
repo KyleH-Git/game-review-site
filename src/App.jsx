@@ -10,6 +10,7 @@ function App() {
   const [user, setUser] = useState({accountName: ''});
   const [gameData, setGameData] = useState({results:[]})
   const [userGameReview, setUserGameReview] = useState([]) // for testing purposes
+  const [profilePage, setProfilePage] = useState('')
 
   /* ---PULL FROM GAMES DATA API--- */
   /* ---CURRENTLY UNNECESSARY--- */
@@ -27,7 +28,7 @@ function App() {
 
   return (
     <>
-      <Header setPage={setPage} user={user} setUser={setUser} setGameData={setGameData}/>
+      <Header setPage={setPage} user={user} setUser={setUser} setGameData={setGameData} setProfilePage={setProfilePage}/>
       <Main 
       page={page} // Page States
       setPage={setPage} // Change Page states in child components
@@ -37,6 +38,8 @@ function App() {
       setGameData={setGameData} // Function to set state variable
       userGameReview={userGameReview}
       setUserGameReview={setUserGameReview}
+      profilePage={profilePage}
+      setProfilePage={setProfilePage}
           // gamesData={gamesData} // Reference to complete data set, currently unnecessary
       />
     </>
