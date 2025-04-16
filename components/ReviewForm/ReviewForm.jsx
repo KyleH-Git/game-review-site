@@ -61,7 +61,6 @@ const ReviewForm = ({setGameData, gameData, setPage, userGameReview, setUserGame
 
     return (
         <div>
-            <button onClick={() => console.log(userGameReview)}>Check Game Reviews</button> {/* Logic to test checking game review */}
             <div className='game-container' key={gameData.gameId}>
                 <img src={gameData.gameImg} style={{ maxWidth: 500}}/>
                 <h2>{gameData.gameName}</h2>
@@ -105,18 +104,6 @@ const ReviewForm = ({setGameData, gameData, setPage, userGameReview, setUserGame
                 <br/><br/>
                 <button onClick={handleSubmit}>Submit New Review</button>
             </form>
-            {/* Testing purposes only: views all game reviews created */}
-            {/* <div>
-            <h3>{`USERNAME'S`} Submitted Reviews</h3> 
-            {userGameReview.map((review, index) => (
-                <div key={index} style={{border: '1px solid gray', padding: '1rem', margin: '0.5rem 0'}}>
-                <h4>{review.title}</h4>
-                <p>{review.body}</p>
-                <p>Stars: {review.stars}</p>
-                <p>Game ID: {review.gameId}</p>
-                </div>
-            ))}
-            </div> */}
             <div><a href="https://rawg.io/" target="_blank"> Powered by RAWG.io</a></div>
         </div>
         
