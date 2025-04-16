@@ -1,0 +1,32 @@
+.searchBox {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 20px 0px;
+    justify-content: space-around;
+}
+
+#gameSearchText {
+    font-size: 24px;
+    padding: 5px;
+    width: 80%;
+}
+
+.game-container {
+    width: 600px;
+    padding: 20px;
+    height: auto;
+    border-radius: 20px;
+    background-image: linear-gradient(to bottom left,darkblue, rgb(214, 95, 95));
+    margin: 10px;
+    align-content: center;
+}
+
+#btnContainer {
+    display: flex;
+    font-size: 20px;
+    width: 50%;
+    flex-direction: column;
+    justify-self: center; 
+    gap: 20px;
+}

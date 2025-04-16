@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './GameSearch.css'
 
 const GameSearch = ({setPage, gameData, setGameData}, props) => {
 
@@ -40,22 +41,29 @@ const GameSearch = ({setPage, gameData, setGameData}, props) => {
 
   return (
     <div>
-        <form onSubmit={handleSearchSubmit}> {/* Search bar to submit new game */}
-            <input type='text' onChange={handleChange}/>
-            <button type='submit'>Search Games</button>
-        </form>
-    {!gameData 
-    ? <></>
-    : gameData.results.map((game) => (
-        <div className='game-container' key={game.id}> 
-          <img src={game.background_image} style={{ maxWidth: 500}}/>
-          <h2> Name: {game.name} Rating: {game.rating} Metacritic: {game.metacritic}</h2>
-          <button name='reviewform' onClick={(evt) => handleClick(game, evt)}>Write Review</button>
-          <button name='gamereviews' onClick={(evt) => handleClick(game, evt)}>See Written Reviews</button>
-        </div>
-      ))
-    }
-        <a href="https://rawg.io/" target="_blank"> Powered by RAWG.io</a>
+      <h1>Game Search</h1>
+      <form onSubmit={handleSearchSubmit}> {/* Search bar to submit new game */}
+          <input id="gameSearchText" type='text' placeholder="Game title... 'Witcher 3' 'GTA V'" onChange={handleChange}/><br/><br/>
+          <button id="btnContainer" type='submit'>Search Games</button>
+      </form>
+      <div className='searchBox'>
+      {!gameData 
+      ? <></>
+      : gameData.results.map((game) => (
+          <div className='game-container' key={game.id}> 
+            <img src={game.background_image} style={{ maxWidth: '600px', maxHeight: '500px'}}/>
+            <h2> {game.name}</h2>
+            <h3> Rating: {game.rating}</h3>
+            <h3> Metacritic: {game.metacritic}</h3>
+            <div id="btnContainer">
+              <button name='reviewform' onClick={(evt) => handleClick(game, evt)}>Write Review</button>
+              <button name='gamereviews' onClick={(evt) => handleClick(game, evt)}>See Written Reviews</button>
+            </div>
+          </div>
+        ))
+      }
+      </div>
+      <a id="apiRef" href="https://rawg.io/" target="_blank"> Powered by RAWG.io</a>
     </div>
   )   
 }
