@@ -11,8 +11,8 @@ const Reviews = (props) => {
 
 
             // Fetch all reviews from DB
-            // const response = await fetch(`http://34.228.71.240:3060/reviews/`)
-            const response = await fetch(`http://localhost:3000/reviews/`)
+            const response = await fetch(`http://34.228.71.240:3060/reviews/`)
+            // const response = await fetch(`http://localhost:3000/reviews/`)
 
             // If successful...
             if (response) {
