@@ -39,9 +39,8 @@ const GameReviews = (props) => {
                 <div key={index}>
                     <h2>Review Title: {review.title}</h2>
                     <h3>User Reviewer: {review.user}</h3>
-                    <h4>{review.gameAPIId}</h4>
-                    <p>{review.body}</p>
-                    <p>{review.stars}</p>
+                    <p>Review Body: {review.body}</p>
+                    <p>Review Stars: {review.stars}</p>
                 </div>
                 ))
             )
