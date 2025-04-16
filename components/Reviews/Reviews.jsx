@@ -23,16 +23,15 @@ const Reviews = (props) => {
                 // GO through each review...
                 for (const reviewObj of JSONdata) {
       
-                    // Use reviewObj for the gameAPIId
+                    // Fetch infro from API based on gameid
                     const gameResponse = await fetch(`http://34.228.71.240:3060/api/games/${reviewObj.gameAPIId}`);
-                    console.log(gameResponse);
+                    
+                    // JSON info
                     const JSONgameData = await gameResponse.json();
-                    console.log(JSONgameData);
+
                         
                     // Add game name to review object
                     reviewObj.gameName = JSONgameData.name;
-                    console.log(JSONgameData.name);
-                    console.log(reviewObj.gameName);
                     
                 }
 
