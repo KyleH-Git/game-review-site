@@ -4,17 +4,23 @@ const GameSearch = ({setPage, gameData, setGameData}, props) => {
 
   const [searchGameURL, setSearchGameURL] = useState('') // State Variables to guide search of games
   
-  const handleClick = (gameName, gameRating, gameId, gameImg, gameReleased, gameGenre) =>  { // Sends user to Create Review Page
+  const handleClick = (game, evt) =>  { // Sends user to Create Review Page
     setGameData({
-      gameName: gameName,
-      gameRating: gameRating,
-      gameId: gameId,
-      gameImg: gameImg,
-      gameReleased: gameReleased,
-      gameGenre: gameGenre,
+      gameName: game.name,
+      gameRating: game.rating,
+      gameId: game.id,
+      gameImg: game.background_image,
+      gameReleased: game.released,
+      gameGenre: game.genres,
     })
     // console.log(gameData) // Log game data that review is made on
-    setPage('reviewform');
+    if (evt.target.name === 'reviewform') {
+        setPage('reviewform');
+    }
+    else if (evt.target.name === 'gamereviews') {
+        setPage('gamereviews')
+    }
+    
   }
 
   const handleChange = (evt) => { // Catalogs input for search parameter by user
@@ -44,7 +50,8 @@ const GameSearch = ({setPage, gameData, setGameData}, props) => {
         <div className='game-container' key={game.id}> 
           <img src={game.background_image} style={{ maxWidth: 500}}/>
           <h2> Name: {game.name} Rating: {game.rating} Metacritic: {game.metacritic}</h2>
-          <button onClick={() => handleClick(game.name, game.rating, game.id, game.background_image, game.released, game.genres)}>Write Review</button>
+          <button name='reviewform' onClick={(evt) => handleClick(game, evt)}>Write Review</button>
+          <button name='gamereviews' onClick={(evt) => handleClick(game, evt)}>See Written Reviews</button>
         </div>
       ))
     }

@@ -4,6 +4,7 @@ import SignupForm from "../SignupForm/SignupForm";
 import ReviewForm from "../ReviewForm/ReviewForm";
 import GameSearch from "../GameSearch/GameSearch";
 import Profile from "../Profile/Profile.jsx"
+import GameReviews from "../Reviews/GameReviews.jsx"
 
 const Main = (props) => {
     return (
@@ -12,12 +13,10 @@ const Main = (props) => {
         {props.page === 'home' ? <Reviews /> : <></>}
         {props.page === 'login' ? <LoginForm setUser={props.setUser} setPage={props.setPage}/> : <></>}
         {props.page === 'signup' ? <SignupForm setUser={props.setUser} setPage={props.setPage}/> : <></>}
-
         {props.page === 'reviewform' ? <ReviewForm setPage={props.setPage} setGameData={props.setGameData} gameData={props.gameData} userGameReview={props.userGameReview} setUserGameReview={props.setUserGameReview} user={props.user}/> : <></>}
         {props.page === 'gamesearch' ? <GameSearch setPage={props.setPage} setGameData={props.setGameData} gameData={props.gameData} /> : <></>}
-
-        {props.page === 'reviewform' ? <ReviewForm setPage={props.setPage} gameData={props.gameData} userGameReview={props.userGameReview} setUserGameReview={props.setUserGameReview} user={props.user}/> : <></>}
         {props.page === 'profile' ? <Profile user={props.user}/> : <></>}
+        {props.page === 'gamereviews' ? <GameReviews setPage={props.setPage} setGameData={props.setGameData} gameData={props.gameData} userGameReview={props.userGameReview} setUserGameReview={props.setUserGameReview} user={props.user}/> :<></>}
 
         </main>
      </>
