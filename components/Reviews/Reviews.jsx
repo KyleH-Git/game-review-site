@@ -6,28 +6,31 @@ const Reviews = (props) => {
     const [reviews, setReviews] = useState([]);
 
     const handleClick = async (evt) => {
-        if (evt.target.name === 'likebutton') {
-            evt.target.innerText = 'Likes: ' + (parseInt(evt.target.value) + 1)
-            await fetch(`http://3.80.194.147:3000/reviews/${evt.target.id}/edit`, {
-                method: 'PUT',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    likes: parseInt(evt.target.value) + 1,
-                })
-              })
-        } else {
-            evt.target.innerText = 'Dislikes: ' + (parseInt(evt.target.value) + 1)
+
+        if (props.user.accountName !== '') {
+            if (evt.target.name === 'likebutton') {
+                evt.target.innerText = 'Likes: ' + (parseInt(evt.target.value) + 1)
                 await fetch(`http://3.80.194.147:3000/reviews/${evt.target.id}/edit`, {
-                method: 'PUT',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    dislikes: parseInt(evt.target.value) + 1,
+                    method: 'PUT',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        likes: parseInt(evt.target.value) + 1,
+                    })
                 })
-              })
+            } else {
+                evt.target.innerText = 'Dislikes: ' + (parseInt(evt.target.value) + 1)
+                    await fetch(`http://3.80.194.147:3000/reviews/${evt.target.id}/edit`, {
+                    method: 'PUT',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        dislikes: parseInt(evt.target.value) + 1,
+                    })
+                })
+            }
         }
     }
 
@@ -92,8 +95,8 @@ const Reviews = (props) => {
                                     review.stars === 4 ? <p><img src='/star.svg'  className='star'/> <img src='/star.svg'  className='star'/> <img src='/star.svg'  className='star'/> <img src='/star.svg' className='star'/> </p> : 
                                     review.stars === 5 ? <p><img src='/star.svg'  className='star'/> <img src='/star.svg'  className='star'/> <img src='/star.svg'  className='star'/><img src='/star.svg'  className='star'/><img src='/star.svg'  className='star'/> </p>: <></> }
 
-                            <button id={review._id} name='likebutton' value={review.likes} onClick={handleClick}>Likes: {review.likes}</button>
-                            <button id={review._id} name='dislikebutton' value={review.dislikes} onClick={handleClick}>Disikes: {review.dislikes}</button>
+                            <button className='likeBtn' id={review._id} name='likebutton' value={review.likes} onClick={handleClick}>Likes: {review.likes}</button>
+                            <button className='dislikeBtn' id={review._id} name='dislikebutton' value={review.dislikes} onClick={handleClick}>Disikes: {review.dislikes}</button>
                         </div>
                     )
 

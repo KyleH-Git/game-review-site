@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const ReviewForm = ({setGameData, gameData, setPage, userGameReview, setUserGameReview, user}) => {
+const ReviewForm = ({setGameData, gameData, setPage, setUserGameReview, user}) => {
 
     const [newReview, setReviewForm] = useState({ // new review form state variable
         gameId: '',
@@ -78,7 +78,7 @@ const ReviewForm = ({setGameData, gameData, setPage, userGameReview, setUserGame
                     <input
                     type="text"
                     name='title'
-                    placeholder={`${'userName'}'s review`}
+                    placeholder={`${user.userName}'s review`}
                     value={newReview.title}
                     onChange={handleChange}
                     />
