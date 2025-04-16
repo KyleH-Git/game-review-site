@@ -1,3 +1,5 @@
+import './EditUsername.css'
+
 const EditUsername = (props) => {
 
     const handleSubmit = async (event) => {
@@ -27,7 +29,7 @@ const EditUsername = (props) => {
 
     return (
         <>
-        <form action="http://3.80.194.147:3000/auth/edit-username" method="POST" onSubmit={handleSubmit}>
+        <form className="usernameForm"action="http://3.80.194.147:3000/auth/edit-username" method="POST" onSubmit={handleSubmit}>
             <p>Edit Username</p>
             <label htmlFor="userName">User Name:</label>
             <input type="text" name="userName" id="userName" required />
