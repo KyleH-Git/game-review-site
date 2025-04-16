@@ -1,3 +1,5 @@
+import './SignupForm.css'
+
 const SignupForm = (props) => {
 
     const handleSubmit = async (event) => {
@@ -36,9 +38,9 @@ const SignupForm = (props) => {
     }
 
     return (
-        <form action="http://3.80.194.147:3000/auth/sign-up" method="POST" onSubmit={handleSubmit}>
+        <form className="signup-form"action="http://3.80.194.147:3000/auth/sign-up" method="POST" onSubmit={handleSubmit}>
 
-            <p>Signup form</p>
+            <h2>Signup for an Account!</h2>
             <label htmlFor="accountName">Account Name:</label>
             <input type="text" name="accountName" id="accountName" required/>
 

@@ -42,7 +42,7 @@ const GameSearch = ({setPage, gameData, setGameData}, props) => {
   return (
     <div>
       <h1>Game Search</h1>
-      <form onSubmit={handleSearchSubmit}> {/* Search bar to submit new game */}
+      <form className="search-form"onSubmit={handleSearchSubmit}> {/* Search bar to submit new game */}
           <input id="gameSearchText" type='text' placeholder="Game title... 'Witcher 3' 'GTA V'" onChange={handleChange}/><br/><br/>
           <button id="btnContainer" type='submit'>Search Games</button>
       </form>

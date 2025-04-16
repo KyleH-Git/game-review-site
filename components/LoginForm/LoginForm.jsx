@@ -1,3 +1,5 @@
+import './LoginForm.css'
+
 const LoginForm = (props) => {
 
     // Function to run on submission of form
@@ -42,9 +44,9 @@ const LoginForm = (props) => {
     }
 
     return (
-        <form action="http://3.80.194.147:3000/auth/sign-in" method="POST" onSubmit={handleSubmit}>
+        <form className="login-form" action="http://3.80.194.147:3000/auth/sign-in" method="POST" onSubmit={handleSubmit}>
 
-            <p>login form</p>
+            <h2>Log in here!</h2>
 
             <label htmlFor="accountName">Account Name:</label>
             <input type="text" name="accountName" id="accountName" required />
