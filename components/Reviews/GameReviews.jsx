@@ -25,14 +25,13 @@ const GameReviews = (props) => {
         <div className='game-container' key={props.gameData.gameId}>
             <img src={props.gameData.gameImg} style={{ maxWidth: 500}}/>
             <h2>{props.gameData.gameName}</h2>
-            <p>Overall Rating: {props.gameData.gameRating}</p>
-            <p>Date Released: {props.gameData.gameReleased}</p>
-            <div id='genreBox'> 
-                <p>Genre: {props.gameData.gameGenre.map((genre) => (
-                    genre.name + ' '
-                ))}
-                </p>
-            </div>
+            <h3>Overall Rating: <span style={{fontWeight: 'normal'}}>{props.gameData.gameRating}</span></h3>
+            <h3>Date Released: <span style={{fontWeight: 'normal'}}>{props.gameData.gameReleased}</span></h3>
+            <h3>Genre: {props.gameData.gameGenre.map((genre) => (
+                <span style={{fontWeight: 'normal'}}>{genre.name + ' '}</span>
+            ))}
+            </h3>
+
         </div>
         {gameReviews.filter(game => game.gameAPIId === props.gameData.gameId).length > 0 ? (
             gameReviews.filter(game => game.gameAPIId === props.gameData.gameId).map((review, index) => (
