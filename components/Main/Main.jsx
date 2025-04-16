@@ -10,7 +10,7 @@ const Main = (props) => {
     return (
     <>
         <main>
-        {props.page === 'home' ? <Reviews /> : <></>}
+        {props.page === 'home' ? <Reviews user={props.user} /> : <></>}
         {props.page === 'login' ? <LoginForm setUser={props.setUser} setPage={props.setPage}/> : <></>}
         {props.page === 'signup' ? <SignupForm setUser={props.setUser} setPage={props.setPage}/> : <></>}
         {props.page === 'reviewform' ? <ReviewForm setPage={props.setPage} setGameData={props.setGameData} gameData={props.gameData} userGameReview={props.userGameReview} setUserGameReview={props.setUserGameReview} user={props.user}/> : <></>}
